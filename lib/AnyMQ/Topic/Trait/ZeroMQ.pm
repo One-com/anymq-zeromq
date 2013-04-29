@@ -17,6 +17,7 @@ has 'read_callback_ref' => (is => 'rw');
 sub BUILD {}; after 'BUILD' => sub {
     my $self = shift;
 
+    $self->bus->_zmq_pub if $self->bus->publish_address; 
     return if $self->publisher_only;
     return unless $self->name;
     return unless $self->bus->subscribe_address;

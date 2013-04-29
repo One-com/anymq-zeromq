@@ -64,7 +64,7 @@ sub _build__zmq_pub {
 
     my $pub = AnyEvent::ZeroMQ::Publish->new(
         context => $self->_zmq_context,
-        connect => $address,
+        bind => $address,
     );
 
     return $pub;
